@@ -18,7 +18,7 @@
   "homepage": "https://github.com/mikegarma/8-expressAvanzado#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^5.3.3",
-    "nanoid": "^3.1.23"
+    "nanoid": "^3.1.23",
+    "pug": "^3.0.2"
   }
 }
