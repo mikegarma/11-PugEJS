@@ -1,0 +1,38 @@
+<html>
+    <%- include('./layouts/header') %>
+<body class="d-flex flex-column h-100">
+    <main class="flex-shrink-0">
+        <div class="container" style="padding-top: 4em;">
+            <h2>My Products</h2>
+            <% if (foundProducts) { %>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Icon</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% products.forEach(function(product){ %>
+                                <tr>
+                                    <td><%= product.id %></td>
+                                    <td><%= product.title %></td>
+                                    <td><%= product.price %></td>
+                                    <td><img src=<%= product.thumbnail %> width="25" height="25"></td>
+                                </tr>
+                        <% })%>
+                        
+                    </tbody>
+                </table>
+            <% } else {%>
+                <div>
+                    <span class="bg-warning text-dark">No hay productos en la lista.</span>
+                </div>
+            <% } %>
+        </div>
+    </main>
+<%- include('./layouts/footer') %>
+</body>
+</html>
