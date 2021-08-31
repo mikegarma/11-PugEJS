@@ -1,4 +1,4 @@
-const { nanoid } = require('nanoid');
+import { nanoid } from 'nanoid';
 
 class Products{
     constructor(){
@@ -40,6 +40,6 @@ class Item{
     }
 }
 
-module.exports = {
+export {
     Products, 
 }

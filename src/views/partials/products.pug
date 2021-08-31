@@ -1,0 +1,25 @@
+div
+    h2 My Products
+    table#products.table.table-striped
+        thead
+            tr
+                th(scope=col) #
+                th(scope=col) Name
+                th(scope=col) Price
+                th(scope=col) Icon
+                
+        tbody#tbody
+        if foundProducts
+            each val in products
+                tr
+                    td #{val.id}
+                    td #{val.title}
+                    td #{val.price}
+                    td 
+                        img(src=val.thumbnail width=25 height=25)
+    if !foundProducts
+        div
+            span#no-products-display.bg-warning.text-dark No hay productos en la lista.
+        script.
+            let table = document.getElementById("products");
+            table.style.display = 'none';

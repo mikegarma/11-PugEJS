@@ -1,4 +1,4 @@
-const {Products} = require('../models/models.js');
+import {Products} from '../models/models.js';
 const myProducts = new Products();
 
 const getItems = () =>{
@@ -37,7 +37,7 @@ const deleteItem = (id) =>{
 }
 
 
-module.exports = {
+export default {
     getItems,
     addItem,
     getItem,

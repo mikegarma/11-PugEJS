@@ -2,6 +2,7 @@
   "name": "8-expressavanzado",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,6 +20,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "nanoid": "^3.1.23",
-    "pug": "^3.0.2"
+    "nodemon": "^2.0.12",
+    "pug": "^3.0.2",
+    "socket.io": "^4.1.3"
   }
 }
