@@ -1,5 +1,8 @@
 const socket = io.connect('http://localhost:8080', { forceNew: true });
 const form = document.getElementById('product-form');
+const chatForm = document.getElementById('chat-form');
+const message = document.getElementById('message');
+const chatMessages = document.getElementById('chat-messages');
 
 socket.emit('askProducts');
 
@@ -57,3 +60,46 @@ socket.on('messages', function (data) {
   render(data);
 });
 */
+
+
+//CHAT IMPLEMENTATION
+
+console.log("chat", chatForm);
+socket.emit('joinedRoom');
+
+chatForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  let data = {
+    'mail': e.target[0].value,
+    'message': e.target[1].value,
+    'date': Date(),
+  }
+
+  //Emit Message to the server
+  socket.emit('sendChatMessage', data);
+
+  //Clear submitted message
+  message.value = '';
+});
+
+socket.on('loadMessages', (messages)=>{
+  messages.forEach(msg=>{
+    createMessageHtml(msg)
+  })
+})
+socket.on('sendLastMessage', (message) =>{
+  createMessageHtml(message);
+})
+
+
+
+let createMessageHtml = (msg) => {
+  const div = document.createElement('div');
+  div.classList.add('message');
+  div.innerHTML = `
+  <p class="meta">${msg.mail} <span> ${msg.date}</span></p>
+  <p class="text"> ${msg.message} </p>`;
+
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}

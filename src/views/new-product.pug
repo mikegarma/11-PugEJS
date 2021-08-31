@@ -3,7 +3,7 @@ doctype html
 html
   head
     include partials/head
-    
+    link(rel='stylesheet' href='public/css/style.css')
   body
     include partials/header
     div.container(style='padding-top: 1em;')
@@ -22,8 +22,12 @@ html
           input#thumbnail.form-control(name='thumbnail' aria-describedby='thumbnail')
           #thumbnailHelp.form-text Url of the icon
         button#submit.btn.btn-primary(type='submit' name='submit') Submit
-        script(src="/socket.io/socket.io.js")
-      script(src="/public/js/main.js")
       br
       br
       include partials/products
+      br
+      br
+      include partials/chat
+
+    script(src="/socket.io/socket.io.js")
+    script(src="/public/js/main.js")

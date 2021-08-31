@@ -16,7 +16,7 @@ const router = express.Router();
 const viewsPath = path.resolve(__dirname, './views/');
 const publicPath = path.resolve(__dirname, '../public/');
 
-
+let chatMessages = [];
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use('/api/', router);
@@ -103,4 +103,15 @@ myWSServer.on('connection', function (socket) {
         let items = itemController.getItems();
         myWSServer.emit('productsExchange', items);
     })
+
+    socket.on('sendChatMessage', function(data){
+        chatMessages.push(data);
+        myWSServer.emit('sendLastMessage', data);
+    })
+    
+    socket.on('joinedRoom', function(data){
+        myWSServer.emit('loadMessages', chatMessages);
+    })
+
 });
+

@@ -1,0 +1,10 @@
+h2 Messages Center
+form#chat-form(action='/' method='post')
+    .input-group.mb-3
+        span#basic-addon1.input-group-text @
+        input#mail.form-control(type='text' placeholder='User Mail' aria-label='Username' aria-describedby='basic-addon1')
+    .input-group
+        span.input-group-text With textarea
+        textarea#message.form-control(aria-label='Message')
+    button#submit.btn.btn-primary(type='submit' name='submit') Submit
+div#chat-messages.chat-messages.container
